@@ -7,7 +7,7 @@ let users = db.collection("users");
 /* GET users listing. */
 router.get("/", async function (req, res, next) {
     const list = await users.list();
-    res.send("Testing");
+    res.send(list);
 });
 
 router.post("/", async function (req, res, next) {
@@ -17,7 +17,7 @@ router.post("/", async function (req, res, next) {
         lastName: lastName,
         age: age,
     });
-    res.send(list);
+    res.send("User Created");
 });
 
 router.put("/", async function (req, res, next) {
