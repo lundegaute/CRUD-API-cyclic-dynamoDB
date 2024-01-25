@@ -10,8 +10,8 @@ router.get("/", async function (req, res, next) {
     res.send(list);
 });
 
-router.get("/user", async function ( req, res, next ) {
-  const {email} = req.body;
+router.get("/:key", async function ( req, res, next ) {
+  const email = req.params.key;
   const user = await users.get(email)
   res.send(user)
 })
