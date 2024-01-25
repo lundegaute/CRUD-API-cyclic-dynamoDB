@@ -10,6 +10,12 @@ router.get("/", async function (req, res, next) {
     res.send(list);
 });
 
+router.get("/user", async function ( req, res, next ) {
+  const {email} = req.body;
+  const user = await users.get(email)
+  res.send(user)
+})
+
 router.post("/", async function (req, res, next) {
     const { email, firstName, lastName, age } = req.body;
     await users.set(email, {
@@ -33,6 +39,7 @@ router.put("/", async function (req, res, next) {
 router.delete("/", async function (req, res, next ) {
   const {email} = req.body
   await users.delete(email)
+  res.send("Delete Successful")
 })
 
 module.exports = router;
